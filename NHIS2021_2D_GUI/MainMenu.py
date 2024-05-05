@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy
+ from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 
@@ -40,8 +40,7 @@ class MainMenu(QMainWindow):
         btn_2d.setFixedSize(450, 40)
         btn_2d.setFont(QFont("", 14))
         button_layout.addWidget(btn_2d)
-
-        # button for 3D Graph
+        
         btn_3d = QPushButton("3D Graph", self)
         btn_3d.clicked.connect(self.show_3d_graph)
         btn_3d.setStyleSheet("background-color: #8080CC; color: white;")
