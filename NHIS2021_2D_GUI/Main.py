@@ -26,7 +26,7 @@ class Main:
         sys.exit(app.exec_())
 
 if __name__ == "__main__":
-    dataset_url = "https://github.com/jihyunlee1007/NHIS2021_Project/blob/main/nhisadult21cleaned.csv"
-    chi_dataset_url = "https://github.com/jihyunlee1007/NHIS2021_Project/blob/main/chi.csv"
+    dataset_url = "https://raw.githubusercontent.com/jihyunlee1007/NHIS2021_Project/main/nhisadult21cleaned.csv"
+    chi_dataset_url = "https://raw.githubusercontent.com/jihyunlee1007/NHIS2021_Project/main/chi.csv"
     app = Main(dataset_url, chi_dataset_url)
     app.run()
