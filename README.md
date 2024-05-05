@@ -1,18 +1,18 @@
-# 2D GUI using Pyqt5: Code Write-up
+# 2D GUI using PyQt5: Code Write-up
 
-This README.md will explain the implementation code for the 2021 NHIS 2D GUI created using Pyqt5. There are a total of 6 Python files.
+This README.md will explain the implementation code for the 2021 NHIS 2D GUI created using PyQt5. There are a total of 6 Python files.
 
-Before using this GUI it is important to make sure you have the Pyqt5 package installed to your computer. To do so, you may type in the command: py -m pip install pyqt5, into your terminal. 
+Before using this GUI it is important to make sure you have the PyQt5 package installed to your computer. To do so, you may type in the command: py -m pip install PyQt5, into your terminal. 
 
 To load the GUI you may open a terminal on your computer and type: py pip path-to-NHIS2021_2D_GUI-folder/Main.py. Alternatively, you may load the Python classes from the NHIS2021_2D_GUI folder in this GitHub repository into a code editor, such as VSCode, and run the Main.py class from there.
 
 ## ChiSquare2Var.py
 
-We import necessary modules from the Pyqt5 library: QWidget, QVBoxLayout, QLabel, QComboBox, QPushButton, QMessageBox, QLineEdit, Qt, and QFont
+We import necessary modules from the PyQt5 library: QWidget, QVBoxLayout, QLabel, QComboBox, QPushButton, QMessageBox, QLineEdit, Qt, and QFont
 
 ### class ChiSquare2Var(QWidget):
 
-*ChiSquare2Var()* passes in QWidget which is a base class for all GUI objects in Pyqt5. It provides functions like creating a window where you can place buttons, labels, text, and other Pyqt5 supported elements.
+*ChiSquare2Var()* passes in QWidget which is a base class for all GUI objects in PyQt5. It provides functions like creating a window where you can place buttons, labels, text, and other PyQt5 supported elements.
 
 - ***def __init__(self, data)***:
 In our constructor, we create class attributes called *data* and *labels*. The attribute called *data* represents the dataset of our chi-square test csv file while *labels* represents a dictionary of labels which will eventually hold the columns *dep_x_squared*, *dep_p_value*, *anx_x_squared*, and *anx_p_value* from our chi.csv file. We then set the window flags to stay on top in order to ensure that when we're clicking around in the main menu, our *ChiSquare2Var* window doesn't get pushed behind. Lastly, we initialize the user interface.
@@ -53,7 +53,7 @@ This checks if the script is being run as the main module. If it is, we define t
 
 ## MainMenu.py
 
-We import necessary modules from Pyqt5: QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, Qt, and QFont. We also import the modules: ChiSquare2Var, DataSet, ThreeDGraph, and TwoDGraph.
+We import necessary modules from PyQt5: QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, Qt, and QFont. We also import the modules: ChiSquare2Var, DataSet, ThreeDGraph, and TwoDGraph.
 
 ### class MainMenu(QMainWindow):
 *MainMenu()* passes in QMainWindow which represents the main menu window of this GUI application. By doing so, we are making the *MainMenu()* class to become the main interface of this GUI application that can contain other widgets.
@@ -75,7 +75,7 @@ This method first checks if the chi-square test window has not been created. If 
 
 ## ThreeDGraph.py
 
-We import necessary modules from Pyqt5: QWidget, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QMessageBox, and Qt. We also import necessary modules from matplotlib: Figure, and FigureCanvasQTAgg.
+We import necessary modules from PyQt5: QWidget, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QMessageBox, and Qt. We also import necessary modules from matplotlib: Figure, and FigureCanvasQTAgg.
 
 ### class ThreeDGraph(QWidget):
 *ThreeDGraph()* passes in QWidget which represents the dataset it needs to plot a 3D graph.
@@ -103,7 +103,7 @@ In order to ensure precautions, we have the code for this method within a try bl
 
 ## TwoDGraph.py 
 
-We import necessary modules from Pyqt5: QWidget, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QMessageBox, and Qt. We import necessary modules from matplotlib: Figure, FigureCanvasQTAgg
+We import necessary modules from PyQt5: QWidget, QVBoxLayout, QHBoxLayout, QComboBox, QLabel, QLineEdit, QMessageBox, and Qt. We import necessary modules from matplotlib: Figure, FigureCanvasQTAgg
 
 ### class TwoDGraph(QWidget):
 *TwoDGraph()* passes in QWidget which represents the dataset it needs to plot a 2D graph.
