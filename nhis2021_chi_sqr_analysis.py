@@ -10,7 +10,7 @@ Original file is located at
 import numpy as np
 import pandas as pd
 
-df=pd.read_csv('https://raw.githubusercontent.com/jihyunlee1007/NHIS2021_2D_GUI/main/chi.csv')
+df=pd.read_csv('https://raw.githubusercontent.com/jihyunlee1007/NHIS2021_Project/main/chi.csv')
 df = df.rename(columns={'Unnamed: 0': 'Question'})
 df
 
