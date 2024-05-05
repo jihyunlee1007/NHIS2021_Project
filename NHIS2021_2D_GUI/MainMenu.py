@@ -1,9 +1,9 @@
- from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QPixmap
+import urllib.request
 
 from ChiSquare2Var import ChiSquare2Var
-from DataSet import DataSet
 from ThreeDGraph import ThreeDGraph
 from TwoDGraph import TwoDGraph
 
@@ -19,14 +19,29 @@ class MainMenu(QMainWindow):
         self.setWindowTitle("2021 National Health Interview Survey (NHIS) 2D GUI")
         self.resize(1900, 1000)
 
+        url = "https://raw.githubusercontent.com/jihyunlee1007/NHIS2021_Project/main/nhis_transparent_icon.png"
+        with urllib.request.urlopen(url) as response:
+            image_data = response.read()
+
+        pixmap = QPixmap()
+        pixmap.loadFromData(image_data)
+
+        image_label = QLabel(self)
+        scaled_pixmap = pixmap.scaledToHeight(70)
+        image_label.setPixmap(scaled_pixmap)
+
         title_label = QLabel("CDC National Health Interview Survey 2021 Data Analysis", self)
         title_label.setAlignment(Qt.AlignCenter)
-
         title_label.setStyleSheet("font-size: 28pt; color: #252547; font-weight: bold;")
+
+        title_layout = QHBoxLayout()
+        title_layout.addWidget(image_label)
+        title_layout.addWidget(title_label)
+        title_layout.setAlignment(Qt.AlignCenter)
 
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignTop)
-        layout.addWidget(title_label)
+        layout.addLayout(title_layout)
 
         spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         layout.addSpacerItem(spacer)
@@ -40,10 +55,10 @@ class MainMenu(QMainWindow):
         btn_2d.setFixedSize(450, 40)
         btn_2d.setFont(QFont("", 14))
         button_layout.addWidget(btn_2d)
-        
+
         btn_3d = QPushButton("3D Graph", self)
         btn_3d.clicked.connect(self.show_3d_graph)
-        btn_3d.setStyleSheet("background-color: #8080CC; color: white;")
+        btn_3d.setStyleSheet("background-color:#8080CC; color: white;")
         btn_3d.setFixedSize(450, 40)
         btn_3d.setFont(QFont("", 14))
         button_layout.addWidget(btn_3d)
