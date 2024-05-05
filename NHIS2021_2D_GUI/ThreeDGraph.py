@@ -114,7 +114,7 @@ class ThreeDGraph(QWidget):
             z = self.data[var3_name]
 
             ax = self.figure.add_subplot(111, projection='3d')
-            ax.scatter(x, y, z, alpha=0.3)
+            ax.scatter(x, y, z, alpha=0.3, color='red')
             ax.set_xlabel(var1_name)
             ax.set_ylabel(var2_name)
             ax.set_zlabel(var3_name)
