@@ -1,6 +1,6 @@
 # 2D GUI using Pyqt5
 
-This README.md will explain the implementation code for the 2021 NHIS 2D GUI created using Pyqt5.
+This README.md will explain the implementation code for the 2021 NHIS 2D GUI created using Pyqt5. There are a total of 6 Python files.
 
 Before using this GUI it is important to make sure you have the Pyqt5 package installed to your computer. To do so, you may type in the command: py -m pip install pyqt5, into your terminal. 
 
@@ -12,7 +12,7 @@ We import necessary modules from the Pyqt5 library: QWidget, QVBoxLayout, QLabel
 
 ### class ChiSquare2Var(QWidget):
 
-ChiSquare2Var passes in QWidget which is a base class for all GUI objects in Pyqt5. It provides functions like creating a window where you can place buttons, labels, text, and other Pyqt5 supported elements.
+*ChiSquare2Var()* passes in QWidget which is a base class for all GUI objects in Pyqt5. It provides functions like creating a window where you can place buttons, labels, text, and other Pyqt5 supported elements.
 
 - ***def __init__(self, data)***:
 In our constructor, we create class attributes called *data* and *labels*. The attribute called *data* represents the dataset of our chi-square test csv file while *labels* represents a dictionary of labels which will eventually hold the columns *dep_x_squared*, *dep_p_value*, *anx_x_squared*, and *anx_p_value* from our chi.csv file. We then set the window flags to stay on top in order to ensure that when we're clicking around in the main menu, our ChiSquare2Var window doesn't get pushed behind. Lastly, we initialize the user interface.
@@ -37,3 +37,38 @@ We have a static method called *load_data()* which allows us to call this method
 
 ## Main.py
 
+We import necessary modules: sys, QApplication, DataSet, and MainMenu.
+
+- ***def __init__(self, dataset_url, chi_dataset_url):***
+Our constructor for the *Main()* class takes in  two parameters, one for the cleaned 2021 NHIS dataset and one for the chi-square test dataset.  These parameters are initalized here.
+
+- ***def load_data(self):***
+This method uses the *load_data()* method from the DataSet class to load in the datasets and set them to our *data* and *chi_data* iknstance variables.
+
+- ***def run(self):***
+The *load_data()* is called first, and then an instance of the MainMenu class is created. This instance is then shown as a window, and an application event loop is started.
+
+### if __name__ == "__main__":
+This checks if the script is being run as the main module. If it is, we define the url addresses for the datasets and create an instance of the *Main()* class using these datasets. We then call the *run()* method onto the instance we created to start the execution of the GUI application.
+
+## MainMenu.py
+
+We import necessary modules from Pyqt5: QMainWindow, QPushButton, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, Qt, and QFont. We also import the modules: ChiSquare2Var, DataSet, ThreeDGraph, and TwoDGraph.
+
+### class MainMenu(QMainWindow):
+*MainMenu()* passes in QMainWindow which represents the main menu window of this GUI application. By doing so, we are making the *MainMenu()* class to become the main interface of this GUI application that can contain other widgets.
+
+- ***def __init__(self, data, chi_data):***
+This is our constructor method for our *MainMenu()* class. We initialize the main menu window, and the instance variables (*data*, *chi_data*, and *chi_widget*) of our class.
+
+- ***def init_ui(self):***
+In this method we essentially initalize the user interface of the main menu window. First we set the window title to "2021 National Health Interview Survey (NHIS) 2D GUI" and resize the window to be 1900 by 1000. Next we create the title label for our main menu window and align it to be centered. Next we set the font size to 28, the color to hex #252547, and bold it. Then we create a layout instance which sets the layout of the main menu window to verticle. We then align the widgets to the top of the main menu window. Then the title label is added as a widget to the layout. Next, we create a spacer to create some space in between the title label and the buttons that we want to create in the main menu window. Now, we create a layout instance of horizontal and align it to be centered. This will allow us to but all of our buttons next to each other instead of being stacked on top of each other. Next, we declare the specific color hex numbers we want our *3D Graph* and *Chi-Square Analysis (2 Variables)* buttons to be. and declare a font size of 14. We then create a push button that connects the button clicking event to the *show_2d_graph()* method. We set the size of the button to be 450 by 40 pixels with a font size of 14 and a font style of Arial. Then we add the button to the layout. We repeat the same steps for our *3D Graph* button except we call the *show_3d_graph()* method when the button is clicked. Likewise, we repeat the same steps for our *Chi-Square Analysis (2 Variables)* button except we call the *show_chi_square()* method when the button is clicked. Now we add the button layout to the main layout of the main menu window. This ensures that the buttons are placed under the title label. Then, we change the background color of the window to hex #CCCCCC.
+
+- ***def show_2d_graph(self):***
+An instance of the *TwoDGraph()* class is created here which is then shown to the main menu window using the *.show()* function. This generates a 2D plot.
+
+- ***def show_3d_graph(self):***
+An instance of the *ThreeDGraph()* class is created here which is then shown to the main menu window using the *.show()* function. This generates a 3D plot.
+
+- ***def show_chi_square(self):***
+This method first checks if the chi-square test window has not been created. If it hasn't, an instance of the *ChiSquareVar2()* class is created. Then it is shown to the main menu window using the *.show()* function. This ensures that a chi-square test window is created and generated.
