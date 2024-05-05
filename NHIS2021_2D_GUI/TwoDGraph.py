@@ -89,7 +89,7 @@ class TwoDGraph(QWidget):
             y = self.data[var2_name]
 
             ax = self.figure.add_subplot(111)
-            sc = ax.scatter(x, y, alpha=0.3)
+            sc = ax.scatter(x, y, alpha=0.3, color='red')
             ax.set_xlabel(var1_name)
             ax.set_ylabel(var2_name)
             ax.set_title("2D Graph")
