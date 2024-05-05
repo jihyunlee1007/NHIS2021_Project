@@ -34,9 +34,6 @@ class MainMenu(QMainWindow):
         button_layout = QHBoxLayout()
         button_layout.setAlignment(Qt.AlignCenter)
 
-        shade_3d = "#8080CC"
-        shade_chi = "#A3A3CC"
-
         btn_2d = QPushButton("2D Graph", self)
         btn_2d.clicked.connect(self.show_2d_graph)
         btn_2d.setStyleSheet("background-color: #4D4D99; color: white;")
@@ -47,14 +44,14 @@ class MainMenu(QMainWindow):
         # button for 3D Graph
         btn_3d = QPushButton("3D Graph", self)
         btn_3d.clicked.connect(self.show_3d_graph)
-        btn_3d.setStyleSheet(f"background-color: {shade_3d}; color: white;")
+        btn_3d.setStyleSheet("background-color: #8080CC; color: white;")
         btn_3d.setFixedSize(450, 40)
         btn_3d.setFont(QFont("", 14))
         button_layout.addWidget(btn_3d)
 
         btn_chisqr = QPushButton("Chi-Square Analysis (2 Variables)", self)
         btn_chisqr.clicked.connect(self.show_chi_square)
-        btn_chisqr.setStyleSheet(f"background-color: {shade_chi}; color: white;")
+        btn_chisqr.setStyleSheet("background-color: #A3A3CC; color: white;")
         btn_chisqr.setFixedSize(450, 40)
         btn_chisqr.setFont(QFont("", 14))
         button_layout.addWidget(btn_chisqr)
