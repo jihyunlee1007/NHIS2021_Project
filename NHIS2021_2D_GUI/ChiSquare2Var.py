@@ -71,7 +71,8 @@ class ChiSquare2Var(QWidget):
             row = self.data.loc[question_combination]
             result_text = ""
             for column, label in self.labels.items():
-                result_text += f"{label}: {row[column]}\n"
+                value = row[column]
+                result_text += f"{label}: <font color='red'>{value}</font><br>"
             self.result_label.setText(result_text)
         else:
             QMessageBox.warning(self, "Error", "Question combination entry not found. Make sure you typed in the correct format")
